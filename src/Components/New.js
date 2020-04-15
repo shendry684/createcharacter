@@ -9,8 +9,8 @@ class New extends Component {
       newCharacter: {
         name: '',
         charType: '',
-        description: '',
-        image: '',
+        // description: '',
+        // image: '',
       },
       errors: {},
     };
@@ -22,22 +22,20 @@ class New extends Component {
     this.setState({newCharacter: c});
   };
 
-  fileChange = (image) => {
-    let c = {...this.state.newCharacter, image: image};
-    this.setState({newCharacter: c});
-  };
+  // fileChange = (image) => {
+  //   let c = {...this.state.newCharacter, image: image};
+  //   this.setState({newCharacter: c});
+  // };
 
   makeCharacter = (e) => {
     e.preventDefault();
-    axios
-      .post('localhost:3000/api/character', this.state.newCharacter)
-      .then((res) => {
-        if (res.data.errors) {
-          this.setState({errors: res.data.errors.errors});
-        } else {
-          this.props.history.push('/');
-        }
-      });
+    axios.post('api/characters', this.state.newCharacter).then((res) => {
+      if (res.data.errors) {
+        this.setState({errors: res.data.errors.errors});
+      } else {
+        this.props.history.push('/');
+      }
+    });
   };
 
   render() {

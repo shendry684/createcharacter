@@ -1,6 +1,9 @@
-import Characters from '../controllers/characters';
-
-export default (app) => {
-  app.get('localhost:8000/api/characters', Characters.getAll);
-  app.post('localhost:8000/api/characters', Characters.create);
+const Characters = require('../controllers/characters');
+module.exports = (app) => {
+  app.get('api/characters', Characters.getAll);
+  app.post('api/characters', Characters.create);
+  app.get('/api/characters/:_id', Characters.getOne);
+  // app.post('/api/reviews/:_id', Characters.review);
+  // app.put('/api/characters/:_id', Characters.update);
+  // app.delete('/api/characters/:_id', Characters.delete);
 };

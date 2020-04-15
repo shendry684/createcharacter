@@ -1,5 +1,5 @@
 const mongoose = require('mongoose');
-const ReviewSchema = require('./review');
+// const ReviewSchema = require('./review');
 const CharacterSchema = mongoose.Schema(
   {
     name: {
@@ -18,8 +18,8 @@ const CharacterSchema = mongoose.Schema(
       minlength: [0, 'Name cannot be one letter'],
     },
 
-    image: {type: String},
-    reviews: [ReviewSchema],
+    // image: {type: String},
+    // reviews: [ReviewSchema],
   },
   {timestamps: true}
 );

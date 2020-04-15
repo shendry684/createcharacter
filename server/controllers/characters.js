@@ -1,6 +1,6 @@
 const mongoose = require('mongoose');
 const Character = mongoose.model('Character');
-const Review = mongoose.model('Review');
+// const Review = mongoose.model('Review');
 
 class Characters {
   getAll(req, res) {
@@ -30,26 +30,26 @@ class Characters {
       }
     });
   }
-  review(req, res) {
-    let r = new Review(req.body);
-    r.save((err) => {
-      if (err) {
-        res.json({status: 200, errors: err});
-      } else {
-        Character.findOneAndUpdate(
-          {_id: req.params._id},
-          {$push: {reviews: r}},
-          (err) => {
-            if (err) {
-              res.json({status: 200, errors: err});
-            } else {
-              res.json({status: 200});
-            }
-          }
-        );
-      }
-    });
-  }
+  // review(req, res) {
+  //   let r = new Review(req.body);
+  //   r.save((err) => {
+  //     if (err) {
+  //       res.json({status: 200, errors: err});
+  //     } else {
+  //       Character.findOneAndUpdate(
+  //         {_id: req.params._id},
+  //         {$push: {reviews: r}},
+  //         (err) => {
+  //           if (err) {
+  //             res.json({status: 200, errors: err});
+  //           } else {
+  //             res.json({status: 200});
+  //           }
+  //         }
+  //       );
+  //     }
+  //   });
+  // }
   // update(req, res) {
   //   Character.findOneAndUpdate(
   //     {_id: req.params._id},
